@@ -6,6 +6,8 @@ import os
 from googleapiclient.discovery import build
 from datetime import datetime
 
+# IMPORTANT: you need to create a devkeys.py and put in a Python list of YouTube API developer keys.
+# Instructions for doing this can be found here: https://developers.google.com/youtube/v3/getting-started
 from devkeys import devkeys
 
 output_dir = 'updated_yt_data'
@@ -14,9 +16,8 @@ if not os.path.exists(output_dir):
 
 search_query = 'coronavirus|covid|wuhan'
 i=0
-overall_time_range = time_range_maker('Oct 18, 2020', datetime.now() - pd.Timedelta(7, 'days'))
 
-#overall_time_range = time_range_maker('Dec 29, 2019', datetime.now() - pd.Timedelta(7, 'days'))
+overall_time_range = time_range_maker('Dec 29, 2019', datetime.now() - pd.Timedelta(7, 'days'))
 
 
 DEVELOPER_KEY = devkeys[i]
