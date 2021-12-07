@@ -1,6 +1,4 @@
 
 *.pyc
 .vscode/settings.json
-devkeys.txt
-*.csv
 devkeys.py
