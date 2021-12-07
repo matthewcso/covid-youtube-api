@@ -33,7 +33,7 @@ def youtube_search(q, youtube, max_results=30 ,order="viewCount", time_range = [
             pageToken = pageToken,
             regionCode = regionCode,
             channelId=channelId,
-            relevanceLanguage = "KR"
+            relevanceLanguage = "en"
             ).execute() 
     elif time_range == [-1, -1]:
         search_response = youtube.search().list(
@@ -46,7 +46,7 @@ def youtube_search(q, youtube, max_results=30 ,order="viewCount", time_range = [
             videoType="any",
             regionCode=regionCode,#'ca',
             channelId=channelId,
-            relevanceLanguage = "KR"
+            relevanceLanguage = "en"
             ).execute() 
     else:
         search_response = youtube.search().list(
@@ -61,7 +61,7 @@ def youtube_search(q, youtube, max_results=30 ,order="viewCount", time_range = [
             videoType="any",
             regionCode=regionCode, #'ca',
             channelId=channelId,
-            relevanceLanguage = "KR"
+            relevanceLanguage = "en"
             ).execute() 
 
     channelIds = []
@@ -97,7 +97,10 @@ def youtube_videos(videoIds, youtube):
     favoriteCount = []
     duration = []
     for video_result in video_response.get("items",[]):
-        viewCount.append(video_result["statistics"]["viewCount"])
+        if 'viewCount' not in video_result["statistics"]:
+              viewCount.append(np.nan)
+        else:
+              viewCount.append(video_result["statistics"]["viewCount"])
         if 'likeCount' not in video_result["statistics"]:
               likeCount.append("N/A")
         else:

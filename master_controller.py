@@ -11,17 +11,8 @@ import isodate
 from googleapiclient.discovery import build
 from datetime import datetime
 
-DEVELOPER_KEY = "AIzaSyCyNg_ahXZj5oaePErxCEp_3S2u2xsCGPw"
-search_query = 'coronavirus|covid|wuhan'
 
-overall_time_range = time_range_maker('Dec 01, 2019', 'Aug 30, 2020')#datetime.now())
-
-output_dir = 'updated_yt_data_kr2'
-n_post_dir = 'n_posts'
-youtube = googleapiclient.discovery.build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
-        developerKey=DEVELOPER_KEY)
-
-def video_information_from_search(search_query, youtube, time_range=[-1, -1], pageToken = None, order='viewCount', regionCode='ca', channelId=None, max_results=30):
+def video_information_from_search(search_query, youtube, time_range=[-1, -1], pageToken = None, order='viewCount', regionCode='ca', channelId=None, max_results=20):
 
     search = youtube_search(search_query, youtube, order=order, max_results=max_results, time_range=time_range, pageToken = pageToken, regionCode=regionCode, channelId=channelId)
     output_df = pd.DataFrame()

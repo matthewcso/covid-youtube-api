@@ -12,7 +12,7 @@ import isodate
 from googleapiclient.discovery import build
 from datetime import datetime
 
-output_folder = 'updated_yt_data'
+output_folder = output_dir
 target_folder = output_dir
 
 if not os.path.exists(output_folder):
