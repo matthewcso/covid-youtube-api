@@ -3,3 +3,4 @@
 .vscode/settings.json
 devkeys.py
 *.png
+.Rhistory

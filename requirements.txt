@@ -5,3 +5,4 @@ openpyxl
 pandas
 scikit-learn
 scipy
+unidecode
